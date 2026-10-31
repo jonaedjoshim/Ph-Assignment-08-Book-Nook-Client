@@ -20,14 +20,16 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-md">
       <Container>
-        <div className="flex h-20 items-center justify-between gap-6">
+        <div className="flex h-20 min-w-0 items-center gap-4">
           {/* Brand */}
-          <BrandLogo iconSize={36} priority />
+          <div className="shrink-0">
+            <BrandLogo iconSize={36} priority />
+          </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className="scrollbar-none mx-8 hidden min-w-0 flex-1 items-center gap-6 overflow-x-auto whitespace-nowrap md:flex lg:mx-8">
             {publicLinks.map((link) => {
               const isActive = pathname === link.href;
 
@@ -35,7 +37,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative text-sm font-medium transition-colors ${
+                  className={`relative shrink-0 py-3 text-sm font-medium transition-colors ${
                     isActive
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground"
@@ -44,7 +46,7 @@ export default function Navbar() {
                   {link.label}
 
                   {isActive && (
-                    <span className="absolute -bottom-2 left-0 h-0.5 w-full bg-primary" />
+                    <span className="absolute bottom-1 left-0 h-0.5 w-full bg-primary" />
                   )}
                 </Link>
               );
@@ -52,12 +54,12 @@ export default function Navbar() {
           </nav>
 
           {/* Desktop Actions */}
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden shrink-0 items-center gap-2 md:flex">
             <ThemeToggle />
 
             <Link
               href="/login"
-              className="px-3 py-2 text-sm font-medium text-foreground hover:text-primary"
+              className="px-2 py-2 text-sm font-medium text-foreground transition-colors hover:text-primary"
             >
               Login
             </Link>
@@ -65,7 +67,7 @@ export default function Navbar() {
             <Button
               nativeButton={false}
               size="lg"
-              className="rounded-md px-5"
+              className="rounded-md px-4"
               render={
                 <Link href="/register">
                   Join BookNook
@@ -76,7 +78,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Actions */}
-          <div className="flex items-center gap-3 lg:hidden">
+          <div className="ml-auto flex shrink-0 items-center gap-3 md:hidden">
             <ThemeToggle />
 
             <button
@@ -93,7 +95,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {menuOpen && (
-          <div className="border-t border-border pb-6 pt-4 lg:hidden">
+          <div className="border-t border-border pt-4 pb-6 md:hidden">
             <nav className="flex flex-col gap-1">
               {publicLinks.map((link) => (
                 <Link

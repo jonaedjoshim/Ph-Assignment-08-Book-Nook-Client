@@ -241,3 +241,13 @@
 .hero-swiper .swiper-slide {
   height: auto;
 }
+
+/* Hidden Scrollbar */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
