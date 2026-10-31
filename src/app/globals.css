@@ -215,3 +215,29 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Hero Slider */
+.hero-swiper {
+  width: 100%;
+}
+
+.hero-bullet {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--muted-foreground);
+  opacity: 0.35;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-bullet-active {
+  width: 24px;
+  background: var(--primary);
+  opacity: 1;
+}
+
+.hero-swiper .swiper-slide {
+  height: auto;
+}
