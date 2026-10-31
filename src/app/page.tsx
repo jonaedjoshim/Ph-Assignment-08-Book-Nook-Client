@@ -1,14 +1,15 @@
+import Link from "next/link";
+import { ArrowUpRight, BookOpen } from "lucide-react";
+
 import Container from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, BookOpen } from "lucide-react";
-import Link from "next/link";
 
 export default function HomePage() {
   return (
     <main className="min-h-screen">
       <Container className="flex min-h-screen flex-col items-center justify-center text-center">
         {/* Brand Icon */}
-        <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+        <div className="mb-8 flex size-16 items-center justify-center rounded-full bg-primary/10 text-primary">
           <BookOpen size={30} strokeWidth={1.5} />
         </div>
 
@@ -28,6 +29,7 @@ export default function HomePage() {
         {/* Action */}
         <div className="mt-10">
           <Button
+            nativeButton={false}
             size="lg"
             className="h-12 rounded-md px-7"
             render={

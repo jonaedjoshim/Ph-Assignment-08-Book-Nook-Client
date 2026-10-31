@@ -1,0 +1,78 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 240 270"
+  fill="none"
+>
+  <g
+    stroke="#234237"
+    stroke-linecap="square"
+    stroke-linejoin="round"
+  >
+    <!-- B Monogram -->
+    <path
+      d="
+        M18 18
+        H143
+        C195 18 222 47 222 88
+        C222 116 208 135 188 145
+        C214 155 231 178 231 205
+        C231 246 201 258 158 258
+        H18
+        V18
+        Z
+      "
+      stroke-width="15"
+    />
+
+    <!-- Inner B Structure -->
+    <path
+      d="M18 137H44"
+      stroke-width="13"
+    />
+
+    <path
+      d="M18 222H162"
+      stroke-width="13"
+    />
+
+    <!-- Book Left Page -->
+    <path
+      d="
+        M46 92
+        C73 88 96 93 120 111
+        V218
+        C99 202 75 197 46 199
+        V92
+        Z
+      "
+      fill="#234237"
+      fill-opacity="0"
+      stroke-width="12"
+    />
+
+    <!-- Book Right Page -->
+    <path
+      d="
+        M120 111
+        C143 93 167 88 194 92
+        V199
+        C166 197 142 202 120 218
+        V111
+        Z
+      "
+      stroke-width="12"
+    />
+
+    <!-- Book Spine -->
+    <path
+      d="M120 111V218"
+      stroke-width="10"
+    />
+
+    <!-- Bottom Book Curve -->
+    <path
+      d="M46 199C76 198 99 202 120 218C142 202 165 198 194 199"
+      stroke-width="8"
+    />
+  </g>
+</svg>

@@ -1,13 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { useState } from "react";
 
 import Container from "@/components/layout/container";
+import BrandLogo from "@/components/layout/brand-logo";
 import ThemeToggle from "@/components/layout/theme-toggle";
 import { Button } from "@/components/ui/button";
 
@@ -18,40 +17,14 @@ const publicLinks = [
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { resolvedTheme } = useTheme();
-
-  const [mounted, setMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
-
-  const isDark = resolvedTheme === "dark";
-
-  const logo = isDark
-    ? "/assets/brand/logo-dark.png"
-    : "/assets/brand/logo-light.png";
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
       <Container>
         <div className="flex h-20 items-center justify-between gap-6">
-          {/* Logo */}
-          <Link href="/" className="relative flex shrink-0 items-center">
-            <Image
-              src={mounted ? logo : "/assets/brand/logo-light.png"}
-              alt="BookNook Logo"
-              width={190}
-              height={65}
-              priority
-              className="h-auto w-36 object-contain sm:w-40"
-            />
-          </Link>
+          {/* Brand */}
+          <BrandLogo iconSize={36} priority />
 
           {/* Desktop Navigation */}
           <nav className="hidden items-center gap-8 lg:flex">
@@ -90,6 +63,7 @@ export default function Navbar() {
             </Link>
 
             <Button
+              nativeButton={false}
               size="lg"
               className="rounded-md px-5"
               render={
@@ -139,11 +113,23 @@ export default function Navbar() {
 
             <div className="mt-5 grid grid-cols-2 gap-3 border-t border-border pt-5">
               <Button
+                nativeButton={false}
                 variant="outline"
-                render={<Link href="/login">Login</Link>}
+                render={
+                  <Link href="/login" onClick={() => setMenuOpen(false)}>
+                    Login
+                  </Link>
+                }
               />
 
-              <Button render={<Link href="/register">Register</Link>} />
+              <Button
+                nativeButton={false}
+                render={
+                  <Link href="/register" onClick={() => setMenuOpen(false)}>
+                    Register
+                  </Link>
+                }
+              />
             </div>
           </div>
         )}
