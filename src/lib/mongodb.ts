@@ -8,9 +8,7 @@ const dnsServers = (process.env.DNS_SERVERS ?? "1.1.1.1,8.8.8.8")
   .map((server) => server.trim())
   .filter(Boolean);
 
-if (dnsServers.length > 0) {
-  setServers(dnsServers);
-}
+setServers(dnsServers);
 
 const uri = process.env.MONGODB_URI;
 const databaseName = process.env.DB_NAME;
