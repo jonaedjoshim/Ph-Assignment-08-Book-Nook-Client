@@ -1,4 +1,16 @@
+import "server-only";
+
+import { setServers } from "node:dns";
 import { MongoClient } from "mongodb";
+
+const dnsServers = (process.env.DNS_SERVERS ?? "1.1.1.1,8.8.8.8")
+  .split(",")
+  .map((server) => server.trim())
+  .filter(Boolean);
+
+if (dnsServers.length > 0) {
+  setServers(dnsServers);
+}
 
 const uri = process.env.MONGODB_URI;
 const databaseName = process.env.DB_NAME;
@@ -15,7 +27,11 @@ const globalForMongo = globalThis as typeof globalThis & {
   bookNookMongoClient?: MongoClient;
 };
 
-const client = globalForMongo.bookNookMongoClient ?? new MongoClient(uri);
+const client =
+  globalForMongo.bookNookMongoClient ??
+  new MongoClient(uri, {
+    serverSelectionTimeoutMS: 10_000,
+  });
 
 if (process.env.NODE_ENV !== "production") {
   globalForMongo.bookNookMongoClient = client;
