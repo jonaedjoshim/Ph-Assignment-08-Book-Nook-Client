@@ -186,38 +186,41 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-md">
       <Container>
         <div className="flex h-20 min-w-0 items-center gap-4">
-          {/* Brand */}
           <div className="shrink-0">
             <BrandLogo iconSize={36} priority />
           </div>
 
-          {/* Tablet and Desktop Navigation */}
-          <nav className="scrollbar-none mx-4 hidden min-w-0 flex-1 items-center gap-6 overflow-x-auto whitespace-nowrap md:flex lg:mx-8">
-            {links.map((link) => {
-              const active = isLinkActive(link.href);
+          {/* Centered tablet and desktop navigation */}
+          <nav
+            aria-label="Main navigation"
+            className="scrollbar-none mx-4 hidden min-w-0 flex-1 items-center overflow-x-auto whitespace-nowrap md:flex lg:mx-8"
+          >
+            <div className="mx-auto flex min-w-max items-center gap-4 px-1 lg:gap-6">
+              {links.map((link) => {
+                const active = isLinkActive(link.href);
 
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  aria-current={active ? "page" : undefined}
-                  className={`relative shrink-0 py-3 text-sm font-medium transition-colors ${
-                    active
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {link.label}
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    aria-current={active ? "page" : undefined}
+                    className={`relative shrink-0 px-1 py-3 text-sm font-medium transition-colors ${
+                      active
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {link.label}
 
-                  {active && (
-                    <span className="absolute right-0 bottom-1 left-0 h-0.5 bg-primary" />
-                  )}
-                </Link>
-              );
-            })}
+                    {active && (
+                      <span className="absolute right-1 bottom-1 left-1 h-0.5 bg-primary" />
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
           </nav>
 
-          {/* Tablet and Desktop Actions */}
           <div className="hidden shrink-0 items-center gap-2 md:flex">
             <ThemeToggle />
 
@@ -252,7 +255,6 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Mobile Actions */}
           <div className="ml-auto flex shrink-0 items-center gap-2 md:hidden">
             <ThemeToggle />
 
@@ -276,10 +278,9 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {menuOpen && (
           <div className="border-t border-border pt-4 pb-6 md:hidden">
-            <nav className="flex flex-col gap-1">
+            <nav aria-label="Mobile navigation" className="flex flex-col gap-1">
               {links.map((link) => {
                 const active = isLinkActive(link.href);
 
