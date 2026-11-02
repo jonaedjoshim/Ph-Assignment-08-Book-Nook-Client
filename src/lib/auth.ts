@@ -40,5 +40,16 @@ export const auth = betterAuth({
 
   socialProviders,
   trustedOrigins: [baseURL],
-  plugins: [jwt()],
+
+  plugins: [
+    jwt({
+      jwt: {
+        definePayload: ({ user }) => ({
+          sub: user.id,
+          name: user.name,
+          email: user.email,
+        }),
+      },
+    }),
+  ],
 });
