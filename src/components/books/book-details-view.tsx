@@ -156,7 +156,7 @@ function BookCover({ imageUrl, title }: { imageUrl: string; title: string }) {
   const [imageFailed, setImageFailed] = useState(false);
 
   return (
-    <div className="relative aspect-[3/4] overflow-hidden rounded-3xl bg-[#EEE6DA] dark:bg-[#263D34]">
+    <div className="relative aspect-3/4 overflow-hidden rounded-3xl bg-[#EEE6DA] dark:bg-[#263D34]">
       {imageUrl && !imageFailed ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
