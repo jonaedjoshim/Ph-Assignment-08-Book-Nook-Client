@@ -233,7 +233,7 @@ function BookSkeleton() {
       aria-hidden="true"
       className="overflow-hidden rounded-3xl border border-[#E8E1D6] bg-[#FFFEFA] dark:border-white/10 dark:bg-[#1E352D]"
     >
-      <div className="aspect-[4/5] animate-pulse bg-[#EEE6DA] dark:bg-[#263D34]" />
+      <div className="aspect-4/5 animate-pulse bg-[#EEE6DA] dark:bg-[#263D34]" />
       <div className="space-y-3 p-5">
         <div className="h-6 w-3/4 animate-pulse rounded bg-[#EEE6DA] dark:bg-[#263D34]" />
         <div className="h-4 w-1/2 animate-pulse rounded bg-[#EEE6DA] dark:bg-[#263D34]" />
@@ -248,7 +248,7 @@ function BookCard({ book }: { book: Book }) {
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-[#E8E1D6] bg-[#FFFEFA] transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#292621]/10 dark:border-white/10 dark:bg-[#1E352D]">
-      <div className="relative aspect-[4/5] overflow-hidden bg-[#EEE6DA] dark:bg-[#263D34]">
+      <div className="relative aspect-4/5 overflow-hidden bg-[#EEE6DA] dark:bg-[#263D34]">
         {book.imageUrl && !imageFailed ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -272,7 +272,7 @@ function BookCard({ book }: { book: Book }) {
       </div>
 
       <div className="flex flex-1 flex-col p-5">
-        <h2 className="min-h-[3.5rem] font-serif text-2xl font-semibold leading-tight text-[#292621] dark:text-[#F2E9D8]">
+        <h2 className="min-h-14 font-serif text-2xl font-semibold leading-tight text-[#292621] dark:text-[#F2E9D8]">
           {book.title}
         </h2>
 
